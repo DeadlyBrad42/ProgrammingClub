@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AustralianVoting
 {
 	class Driver
 	{
 		const string _path = @"input.txt";
+		static Stopwatch _stopwatch = new Stopwatch();
 
 		static void Main(string[] args)
 		{
+			_stopwatch.Start();
+
 			List<BallotSet> _ballotSets = new List<BallotSet>();
 
 			// Read input file into memory
@@ -61,6 +65,16 @@ namespace AustralianVoting
 				}
 			}
 
+			_stopwatch.Stop();
+			TimeSpan _elapsedTime = _stopwatch.Elapsed;
+			string _elapsedTime_s = String.Format(
+				"{0:00}h {1:00}m {2:00}s {3:00}ms",
+				_elapsedTime.Hours,
+				_elapsedTime.Minutes,
+				_elapsedTime.Seconds,
+				_elapsedTime.Milliseconds / 10
+			);
+			System.Console.WriteLine("Elapsed time: " + _elapsedTime_s);
 			System.Console.ReadKey();
 		}
 	}
