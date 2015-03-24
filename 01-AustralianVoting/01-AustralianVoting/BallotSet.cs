@@ -55,10 +55,10 @@ namespace AustralianVoting
 			// Convert to percentages
 			for (int _candidateCount = 0; _candidateCount < _candidates.Count; _candidateCount++)
 			{
-				_tally[_candidateCount + 1] = (int)(((double)_tally[_candidateCount + 1] /(double) _totalVotes) * 100);
+				_tally[_candidateCount + 1] = (int)(((double)_tally[_candidateCount + 1] / (double) _totalVotes) * 100) ;
 			}
 
-				return _tally;
+			return _tally;
 		}
 
 		public void ProcessEliminatedCandidates()
