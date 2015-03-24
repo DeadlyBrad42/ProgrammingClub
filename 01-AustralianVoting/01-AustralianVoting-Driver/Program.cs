@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _01_AustralianVoting
+namespace _01_AustralianVoting_Driver
 {
 	class Program
 	{
