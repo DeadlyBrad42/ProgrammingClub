@@ -48,7 +48,7 @@ namespace AustralianVoting
 					if(_somebodyHasWon)
 					{
 						// return name and show congratulations!
-						Console.WriteLine("Winner: " + _ballotSet.Candidates[_winningCandidate.Key - 1]);		// -1 because I used a 1-based index, instead of 0
+						Console.WriteLine("Winner: " + _ballotSet.Candidates[_winningCandidate.Key]);
 					}
 					else
 					{
