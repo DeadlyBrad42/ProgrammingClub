@@ -61,7 +61,7 @@ namespace AustralianVoting
 
 					_currentBallotSet.Ballots.Add(new Ballot(_currentBallot_int));
 					_line = _streamReader.ReadLine();
-				} while (_line != "" && _line != null && !_streamReader.EndOfStream);
+				} while (_line != "" && _line != null);
 
 				_ballotSets.Add(_currentBallotSet);
 			}
