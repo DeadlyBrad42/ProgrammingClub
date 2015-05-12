@@ -56,31 +56,31 @@ namespace _02_PokerHands
 
 		private static int getUniqueCardCount(List<Card> cards)
 		{
-			int _binaryRepresentation_Face =
+			int _faceValuesBinary =
 				(int)cards[0].Number
 				& (int)cards[1].Number
 				& (int)cards[2].Number
 				& (int)cards[3].Number
 				& (int)cards[4].Number;
-			int _uniqueCardCount = 0;
+			int _uniqueFaceValueCount = 0;
 
-			for (int _count = 0; _count < 13; _count++ )
+			for (int _faceCount = 0; _faceCount < 13; _faceCount++ )
 			{
-				// Check the 1s digit of the binary representation of the poker hand. If it's a 1, that's a unique card
-				if ((_binaryRepresentation_Face & 1) == 1)
+				// Check the 1s digit of the binary representation of the poker hand's values. If it's a 1, that's a unique card
+				if ((_faceValuesBinary & 1) == 1)
 				{
-					_uniqueCardCount++;
+					_uniqueFaceValueCount++;
 				}
 
-				_binaryRepresentation_Face = _binaryRepresentation_Face >> 1;
+				_faceValuesBinary = _faceValuesBinary >> 1;
 			}
 
-			return _uniqueCardCount;
+			return _uniqueFaceValueCount;
 		}
 
-		private static bool isFlush(List<Card> cards)
+		private static int getUniqueSuitCount(List<Card> cards)
 		{
-			int _binaryRepresentation_Suit =
+			int _SuitsBinary =
 				(int)cards[0].Suit
 				& (int)cards[1].Suit
 				& (int)cards[2].Suit
@@ -88,18 +88,23 @@ namespace _02_PokerHands
 				& (int)cards[4].Suit;
 			int _uniqueSuitCount = 0;
 
-			for (int _count = 0; _count < 4; _count++)
+			for (int _suitCount = 0; _suitCount < 4; _suitCount++)
 			{
-				// Check the 1s digit of the binary representation of the poker hand. If it's a 1, that's a unique suit
-				if ((_binaryRepresentation_Suit & 1) == 1)
+				// Check the 1s digit of the binary representation of the poker hand's suits. If it's a 1, that's a unique suit
+				if ((_SuitsBinary & 1) == 1)
 				{
 					_uniqueSuitCount++;
 				}
 
-				_binaryRepresentation_Suit = _binaryRepresentation_Suit >> 1;
+				_SuitsBinary = _SuitsBinary >> 1;
 			}
 
-			return (_uniqueSuitCount == 1);
+			return _uniqueSuitCount;
+		}
+
+		private static bool isFlush(List<Card> cards)
+		{
+			return (getUniqueSuitCount(cards) == 1);
 		}
 
 		private static bool isStraight(List<Card> cards)
