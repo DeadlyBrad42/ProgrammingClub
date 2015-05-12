@@ -13,6 +13,8 @@ namespace _02_PokerHands
 		{
 			int _uniqueCards = getUniqueCardCount(cards);
 
+			Enums.Hand _hand = Enums.Hand.HighCard;
+
 			switch(_uniqueCards)
 			{
 				case 5:
@@ -22,23 +24,25 @@ namespace _02_PokerHands
 
 					if(_isStraight && _isFlush)
 					{
-						return Enums.Hand.StraightFlush;
+						_hand = Enums.Hand.StraightFlush;
 					}
 					else if (_isStraight && !_isFlush)
 					{
-						return Enums.Hand.Straight;
+						_hand = Enums.Hand.Straight;
 					}
 					else if (!_isStraight && _isFlush)
 					{
-						return Enums.Hand.Flush;
+						_hand = Enums.Hand.Flush;
 					}
 					else
 					{
-						return Enums.Hand.HighCard;
+						_hand = Enums.Hand.HighCard;
 					}
+					break;
 				case 4:
 					// Four unique cards narrows it down to a Pair
-					return Enums.Hand.Pair;
+					_hand = Enums.Hand.Pair;
+					break;
 				case 3:
 					// Three unique cards narrows it down to TwoPair or ThreeOfAKind
 					break;
@@ -47,13 +51,12 @@ namespace _02_PokerHands
 					break;
 			}
 
-			// This should never happen
-			throw new Exception("Couldn't identify hand");
+			return _hand;
 		}
 
 		private static int getUniqueCardCount(List<Card> cards)
 		{
-			int _binaryHandRepresentation =
+			int _binaryRepresentation_Face =
 				(int)cards[0].Number
 				& (int)cards[1].Number
 				& (int)cards[2].Number
@@ -64,12 +67,12 @@ namespace _02_PokerHands
 			for (int _count = 0; _count < 13; _count++ )
 			{
 				// Check the 1s digit of the binary representation of the poker hand. If it's a 1, that's a unique card
-				if ((_binaryHandRepresentation & 1) == 1)
+				if ((_binaryRepresentation_Face & 1) == 1)
 				{
 					_uniqueCardCount++;
 				}
 
-				_binaryHandRepresentation = _binaryHandRepresentation >> 1;
+				_binaryRepresentation_Face = _binaryRepresentation_Face >> 1;
 			}
 
 			return _uniqueCardCount;
@@ -77,8 +80,7 @@ namespace _02_PokerHands
 
 		private static bool isFlush(List<Card> cards)
 		{
-			throw new NotImplementedException();
-			int _binaryHandRepresentation =
+			int _binaryRepresentation_Suit =
 				(int)cards[0].Suit
 				& (int)cards[1].Suit
 				& (int)cards[2].Suit
@@ -89,12 +91,12 @@ namespace _02_PokerHands
 			for (int _count = 0; _count < 4; _count++)
 			{
 				// Check the 1s digit of the binary representation of the poker hand. If it's a 1, that's a unique suit
-				if ((_binaryHandRepresentation & 1) == 1)
+				if ((_binaryRepresentation_Suit & 1) == 1)
 				{
 					_uniqueSuitCount++;
 				}
 
-				_binaryHandRepresentation = _binaryHandRepresentation >> 1;
+				_binaryRepresentation_Suit = _binaryRepresentation_Suit >> 1;
 			}
 
 			return (_uniqueSuitCount == 1);

@@ -17,7 +17,28 @@ namespace _02_PokerHands
 			//var _lines = File.ReadAllLines("");
 			_stopwatch.Start();
 
-			// Process file, display results
+			// Read File
+			
+			// Parse Each line of file
+			//List<Card> _blackCards = HandParser.Parse(/*first half of line*/);
+			//List<Card> _whiteCards = HandParser.Parse(/*second half of line*/);
+
+			// Compare Hands
+			//Enums.Winner _winner = HandComparator.Compare(_blackCards, _whiteCards);
+
+			// Announce Winner
+			//switch(_winner)
+			//{
+			//	case Enums.Winner.Black:
+			//		Console.WriteLine("Black wins.");
+			//		break;
+			//	case Enums.Winner.White:
+			//		Console.WriteLine("White wins.");
+			//		break;
+			//	case Enums.Winner.Tie:
+			//		Console.WriteLine("Tie.");
+			//		break;
+			//}
 
 			_stopwatch.Stop();
 			TimeSpan _elapsedTime = _stopwatch.Elapsed;

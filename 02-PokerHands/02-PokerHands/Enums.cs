@@ -8,6 +8,13 @@ namespace _02_PokerHands
 {
 	class Enums
 	{
+		public enum Winner
+		{
+			Black,
+			White,
+			Tie
+		}
+
 		public enum Suit
 		{
 			Spades		= 1,
