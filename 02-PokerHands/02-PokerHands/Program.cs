@@ -23,14 +23,14 @@ namespace _02_PokerHands
 
 				//foreach(/*line of file*/)
 				//{
-				//	 Parse Each line of file
+				//	// Parse the players' hands
 				//	List<Card> _blackCards = HandParser.Parse(/*first half of line*/);
 				//	List<Card> _whiteCards = HandParser.Parse(/*second half of line*/);
 
-				//	 Compare Hands
+				//	// Compare hands
 				//	Enums.Winner _winner = HandComparator.Compare(_blackCards, _whiteCards);
 
-				//	 Announce Winner
+				//	// Announce Winner
 				//	switch(_winner)
 				//	{
 				//		case Enums.Winner.Black:
