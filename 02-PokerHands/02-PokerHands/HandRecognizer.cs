@@ -11,7 +11,7 @@ namespace _02_PokerHands
 	{
 		public static Enums.Hand Recognize(List<Card> cards)
 		{
-			int _uniqueCards = getUniqueCardCount(cards);
+			int _uniqueCards = getUniqueFaceValueCount(cards);
 
 			Enums.Hand _hand = Enums.Hand.HighCard;
 
@@ -54,7 +54,7 @@ namespace _02_PokerHands
 			return _hand;
 		}
 
-		private static int getUniqueCardCount(List<Card> cards)
+		private static int getUniqueFaceValueCount(List<Card> cards)
 		{
 			int _faceValuesBinary =
 				(int)cards[0].Number
