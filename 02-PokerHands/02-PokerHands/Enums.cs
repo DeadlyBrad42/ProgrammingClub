@@ -23,7 +23,7 @@ namespace _02_PokerHands
 			Diamonds	= 8
 		}
 
-		public enum Number
+		public enum FaceValue
 		{
 			Two			= 1,
 			Three		= 2,

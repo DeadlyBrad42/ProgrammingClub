@@ -10,6 +10,6 @@ namespace _02_PokerHands
 	class Card
 	{
 		public Enums.Suit Suit;
-		public Enums.Number Number;
+		public Enums.FaceValue FaceValue;
 	}
 }

@@ -57,11 +57,11 @@ namespace _02_PokerHands
 		private static int getUniqueFaceValueCount(List<Card> cards)
 		{
 			int _faceValuesBinary =
-				(int)cards[0].Number
-				& (int)cards[1].Number
-				& (int)cards[2].Number
-				& (int)cards[3].Number
-				& (int)cards[4].Number;
+				(int)cards[0].FaceValue
+				& (int)cards[1].FaceValue
+				& (int)cards[2].FaceValue
+				& (int)cards[3].FaceValue
+				& (int)cards[4].FaceValue;
 			int _uniqueFaceValueCount = 0;
 
 			for (int _faceCount = 0; _faceCount < 13; _faceCount++ )
