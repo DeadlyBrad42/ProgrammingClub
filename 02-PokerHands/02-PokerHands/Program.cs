@@ -9,17 +9,20 @@ namespace _02_PokerHands
 	class Program
 	{
 		public const int TimesToRun = 3;
-		public const string FilePath = "";
+		public const string FilePath = @"input1.txt";
 
 		static void Main(string[] args)
 		{
-			List<Stopwatch> _runTimers = new List<Stopwatch>(TimesToRun);
+			List<Stopwatch> _runTimers = new List<Stopwatch>();
 
 			for (int _runCount = 0; _runCount < TimesToRun; _runCount++)
 			{
 				// Read File
 				string[] _lines = File.ReadAllLines(FilePath);
-				_runTimers.ElementAt(_runCount).Start();
+
+				// Initialize stopwatch
+				Stopwatch _stopwatch = new Stopwatch();
+				_stopwatch.Start();
 				
 				foreach(string _line in _lines)
 				{
@@ -46,8 +49,8 @@ namespace _02_PokerHands
 					}
 				}
 
-				_runTimers.ElementAt(_runCount).Stop();
-				
+				_stopwatch.Stop();
+				_runTimers.Add(_stopwatch);
 			}
 
 			Console.WriteLine("=== Run Times ==================================================================");
