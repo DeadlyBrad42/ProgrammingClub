@@ -23,10 +23,11 @@ namespace _02_PokerHands
 				// Initialize stopwatch
 				Stopwatch _stopwatch = new Stopwatch();
 				_stopwatch.Start();
-				
+
+				Console.WriteLine("Run #" + (_runCount + 1));
+
 				foreach(string _line in _lines)
 				{
-					
 					// Parse the players' hands
 					List<Card> _blackCards = HandParser.Parse(_line.Substring(0, 14));		// First half of line
 					List<Card> _whiteCards = HandParser.Parse(_line.Substring(15));			// Second half of line

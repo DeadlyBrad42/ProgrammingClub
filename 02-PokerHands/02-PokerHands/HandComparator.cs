@@ -23,10 +23,38 @@ namespace _02_PokerHands
 			{
 				_winner = Enums.Winner.White;
 			}
-			else // Tie
+			else // Need to break the tie
 			{
-				// Continue comparing based on values
-				throw new NotImplementedException();
+				switch(_blackHand)
+				{
+					case Enums.Hand.HighCard:
+						_winner = TieSettler.HighCard(blackCards, whiteCards);
+						break;
+					case Enums.Hand.Pair:
+						_winner = TieSettler.Pair(blackCards, whiteCards);
+						break;
+					case Enums.Hand.TwoPair:
+						_winner = TieSettler.TwoPair(blackCards, whiteCards);
+						break;
+					case Enums.Hand.ThreeOfAKind:
+						_winner = TieSettler.ThreeOfAKind(blackCards, whiteCards);
+						break;
+					case Enums.Hand.Straight:
+						_winner = TieSettler.Straight(blackCards, whiteCards);
+						break;
+					case Enums.Hand.Flush:
+						_winner = TieSettler.Flush(blackCards, whiteCards);
+						break;
+					case Enums.Hand.FullHouse:
+						_winner = TieSettler.FullHouse(blackCards, whiteCards);
+						break;
+					case Enums.Hand.FourOfAKind:
+						_winner = TieSettler.FourOfAKind(blackCards, whiteCards);
+						break;
+					case Enums.Hand.StraightFlush:
+						_winner = TieSettler.StraightFlush(blackCards, whiteCards);
+						break;
+				}
 			}
 
 			return _winner;
