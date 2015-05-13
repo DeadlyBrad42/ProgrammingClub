@@ -58,10 +58,10 @@ namespace _02_PokerHands
 		{
 			int _faceValuesBinary =
 				(int)cards[0].FaceValue
-				& (int)cards[1].FaceValue
-				& (int)cards[2].FaceValue
-				& (int)cards[3].FaceValue
-				& (int)cards[4].FaceValue;
+				| (int)cards[1].FaceValue
+				| (int)cards[2].FaceValue
+				| (int)cards[3].FaceValue
+				| (int)cards[4].FaceValue;
 			int _uniqueFaceValueCount = 0;
 
 			for (int _faceCount = 0; _faceCount < 13; _faceCount++ )
@@ -78,33 +78,28 @@ namespace _02_PokerHands
 			return _uniqueFaceValueCount;
 		}
 
-		private static int getUniqueSuitCount(List<Card> cards)
+		private static bool isFlush(List<Card> cards)
 		{
+			//return (getUniqueSuitCount(cards) == 1);
 			int _SuitsBinary =
 				(int)cards[0].Suit
 				& (int)cards[1].Suit
 				& (int)cards[2].Suit
 				& (int)cards[3].Suit
 				& (int)cards[4].Suit;
-			int _uniqueSuitCount = 0;
 
 			for (int _suitCount = 0; _suitCount < 4; _suitCount++)
 			{
 				// Check the 1s digit of the binary representation of the poker hand's suits. If it's a 1, that's a unique suit
 				if ((_SuitsBinary & 1) == 1)
 				{
-					_uniqueSuitCount++;
+					return true;
 				}
 
 				_SuitsBinary = _SuitsBinary >> 1;
 			}
 
-			return _uniqueSuitCount;
-		}
-
-		private static bool isFlush(List<Card> cards)
-		{
-			return (getUniqueSuitCount(cards) == 1);
+			return false;
 		}
 
 		private static bool isStraight(List<Card> cards)

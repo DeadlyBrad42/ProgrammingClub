@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 
 namespace _02_PokerHands
@@ -16,34 +17,34 @@ namespace _02_PokerHands
 
 			for (int _runCount = 0; _runCount < TimesToRun; _runCount++)
 			{
-				//var _lines = File.ReadAllLines(FilePath);
-				_runTimers.ElementAt(_runCount).Start();
-
 				// Read File
+				string[] _lines = File.ReadAllLines(FilePath);
+				_runTimers.ElementAt(_runCount).Start();
+				
+				foreach(string _line in _lines)
+				{
+					
+					// Parse the players' hands
+					List<Card> _blackCards = HandParser.Parse(_line.Substring(0, 14));		// First half of line
+					List<Card> _whiteCards = HandParser.Parse(_line.Substring(15));			// Second half of line
 
-				//foreach(/*line of file*/)
-				//{
-				//	// Parse the players' hands
-				//	List<Card> _blackCards = HandParser.Parse(/*first half of line*/);
-				//	List<Card> _whiteCards = HandParser.Parse(/*second half of line*/);
+					// Compare hands
+					Enums.Winner _winner = HandComparator.Compare(_blackCards, _whiteCards);
 
-				//	// Compare hands
-				//	Enums.Winner _winner = HandComparator.Compare(_blackCards, _whiteCards);
-
-				//	// Announce Winner
-				//	switch(_winner)
-				//	{
-				//		case Enums.Winner.Black:
-				//			Console.WriteLine("Black wins.");
-				//			break;
-				//		case Enums.Winner.White:
-				//			Console.WriteLine("White wins.");
-				//			break;
-				//		case Enums.Winner.Tie:
-				//			Console.WriteLine("Tie.");
-				//			break;
-				//	}
-				//}
+					// Announce Winner
+					switch(_winner)
+					{
+						case Enums.Winner.Black:
+							Console.WriteLine("Black wins.");
+							break;
+						case Enums.Winner.White:
+							Console.WriteLine("White wins.");
+							break;
+						case Enums.Winner.Tie:
+							Console.WriteLine("Tie.");
+							break;
+					}
+				}
 
 				_runTimers.ElementAt(_runCount).Stop();
 				
