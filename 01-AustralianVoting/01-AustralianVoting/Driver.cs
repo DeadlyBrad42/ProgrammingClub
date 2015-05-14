@@ -72,7 +72,7 @@ namespace AustralianVoting
 				_elapsedTime.Hours,
 				_elapsedTime.Minutes,
 				_elapsedTime.Seconds,
-				_elapsedTime.Milliseconds / 10
+				_elapsedTime.Milliseconds
 			);
 			System.Console.WriteLine("Elapsed time: " + _elapsedTime_s);
 			System.Console.ReadKey();

@@ -81,7 +81,7 @@ namespace _02_PokerHands
 				timespan.Hours,
 				timespan.Minutes,
 				timespan.Seconds,
-				timespan.Milliseconds / 10
+				timespan.Milliseconds
 			);
 		}
 	}
