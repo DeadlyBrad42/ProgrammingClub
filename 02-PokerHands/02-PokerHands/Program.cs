@@ -9,7 +9,7 @@ namespace _02_PokerHands
 	class Program
 	{
 		public const int TimesToRun = 3;
-		public const string FilePath = @"input1.txt";
+		public const string FilePath = @"input3.txt";
 
 		static void Main(string[] args)
 		{
@@ -19,6 +19,11 @@ namespace _02_PokerHands
 			{
 				// Read File
 				string[] _lines = File.ReadAllLines(FilePath);
+
+
+				int _blackCount = 0;
+				int _whiteCount = 0;
+				int _tieCount = 0;
 
 				// Initialize stopwatch
 				Stopwatch _stopwatch = new Stopwatch();
@@ -39,30 +44,28 @@ namespace _02_PokerHands
 					switch(_winner)
 					{
 						case Enums.Winner.Black:
-							Console.WriteLine("Black wins.");
+							//Console.WriteLine("Black wins.");
+							_blackCount++;
 							break;
 						case Enums.Winner.White:
-							Console.WriteLine("White wins.");
+							//Console.WriteLine("White wins.");
+							_whiteCount++;
 							break;
 						case Enums.Winner.Tie:
-							Console.WriteLine("Tie.");
+							//Console.WriteLine("Tie.");
+							_tieCount++;
 							break;
 					}
 				}
 
 				_stopwatch.Stop();
 				_runTimers.Add(_stopwatch);
-			}
-
-			Console.WriteLine("=== Run Times ==================================================================");
-			// Times per run
-			for (int _runCount = 0; _runCount < TimesToRun; _runCount++)
-			{
-				Stopwatch _stopwatch = _runTimers.ElementAt(_runCount);
+				Console.WriteLine("Black wins: " + _blackCount + ", White wins: " + _whiteCount + ", Ties: " + _tieCount);
 				Console.WriteLine("Run " + (_runCount + 1) + " elapsed time: " + FormatTimeSpan(_stopwatch.Elapsed));
 			}
-			Console.WriteLine();
+
 			// Average run time
+			Console.WriteLine();
 			TimeSpan _averageRunTime = TimeSpan.FromMilliseconds(_runTimers.Average(x => x.Elapsed.TotalMilliseconds));
 			Console.WriteLine("Average run time: " + FormatTimeSpan(_averageRunTime));
 			Console.WriteLine();
